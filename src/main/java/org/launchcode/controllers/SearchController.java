@@ -29,7 +29,7 @@ public class SearchController {
         /*
                 return all if all is SearchType and no searchterm was entered
                  */
-        if (searchTerm.isEmpty() && searchType.contentEquals("all")) {
+            if (searchTerm.isEmpty() && searchType.contentEquals("all")) {
                 ArrayList<HashMap<String, String>> jobs = JobData.findAll();
                 model.addAttribute("columns", ListController.columnChoices);
                 model.addAttribute("title", "All jobs");
@@ -40,7 +40,7 @@ public class SearchController {
                 This should search all rows and return anything with matching search term
                  */
             } else if (searchType.contentEquals("all")) {
-                ArrayList<String> jobs = JobData.findAll(searchTerm);
+                ArrayList<HashMap<String, String>> jobs = JobData.findByValue(searchTerm);
                 model.addAttribute("columns", ListController.columnChoices);
                 model.addAttribute("title", "All jobs with " + searchTerm);
                 model.addAttribute("searchType", searchType);

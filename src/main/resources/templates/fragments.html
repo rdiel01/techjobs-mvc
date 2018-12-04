@@ -43,10 +43,10 @@
         </table>
     </div>
 
-    <div th:fragment="search-results_2" th:if="${jobs} and ${jobs.size()}">
-        <h2 th:for="${jobs}" th:text="${jobs.size()}+ ' Result(s)'"></h2>
-        <table class="job-listing" th:each="job, idx : ${jobs}" th:class="${idx.odd} ? 'odd'">
+    <div th:fragment="search-results_2" th:if="${jobs}">
+        <h2 th:text="${jobs.size()}+ ' Result(s)'"></h2>
 
+        <table class="job-listing" th:each="job, idx : ${jobs}" th:class="${idx.odd} ? 'odd'">
             <tr th:each="aJob : ${job}" th:href="@{/search/results(value=${job})}">
                 <td class="bold" th:text="${#strings.capitalizeWords(aJob.key)}"></td>
                 <td th:text="${aJob.value}"></td>
@@ -54,5 +54,6 @@
             <hr/>
         </table>
     </div>
+
 </body>
 </html>
